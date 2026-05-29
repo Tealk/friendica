@@ -727,7 +727,7 @@ class L10n
 	public function formatDateTime(string $datestring, int $dateType, int $timeType, ?string $pattern = null): string
 	{
 		$formatter = new IntlDateFormatter(
-			$this->normaliseLocale($this->session->get('language')),
+			$this->normaliseLocale($this->session->get('language') ?? $this->config->get('system', 'language', 'en-US')),
 			$dateType,
 			$timeType,
 			$this->session->get('timezone') ?? null,
